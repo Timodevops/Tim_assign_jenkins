@@ -30,12 +30,12 @@ pipeline {
         }
     }
 
-    //     stage('Terraform Destroy') {
-    //         steps {
-    //             sh 'terraform destroy -auto-approve tfplan'
-    //         }
-    //     }
-    // }
+        stage('Terraform Destroy') {
+            steps {
+                sh 'terraform destroy -auto-approve tfplan'
+            }
+        }
+    }
 
     post {
         always {

@@ -51,7 +51,7 @@ resource "aws_instance" "my_ec2-1" {
   }
 }
 resource "aws_instance" "my_ec2-2" {
-  ami           = "ami-0d77c9d87c7e619f9" # Replace with your desired AMI
+  ami           = "ami-058bd2d568351da34" # Replace with your desired AMI
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.subnet_1.id
   vpc_security_group_ids = [aws_security_group.my_security_group.id]
