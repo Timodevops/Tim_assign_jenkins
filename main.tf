@@ -57,7 +57,7 @@ resource "aws_internet_gateway" "my_igw-2" {
 
 # Create 3 EC2 instances
 resource "aws_instance" "my_ec2-1" {
-  ami           = "ami-0bb84b8ffd87024d8" # Replace with your desired AMI
+  ami           = "ami-02bf8ce06a8ed6092" # Replace with your desired AMI
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.subnet_1.id
   vpc_security_group_ids = [aws_security_group.my_security_group.id]
@@ -66,7 +66,7 @@ resource "aws_instance" "my_ec2-1" {
   }
 }
 resource "aws_instance" "my_ec2-2" {
-  ami           = "ami-04ff98ccbfa41c9ad" # Replace with your desired AMI
+  ami           = "ami-0d77c9d87c7e619f9" # Replace with your desired AMI
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.subnet_2.id
   vpc_security_group_ids = [aws_security_group.my_security_group.id]
