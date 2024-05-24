@@ -4,7 +4,7 @@ provider "aws" {
 }
 
 # Create the VPC, subnets, internet gateway, and availability zones
-resource "aws_vpc" "my_vpc" {
+resource "aws_vpc" "my_vpc-1" {
     cidr_block = "10.0.0.0/16"
 
   tags = {
@@ -12,7 +12,7 @@ resource "aws_vpc" "my_vpc" {
   }
 }
 
-resource "aws_vpc" "my_vpc" {
+resource "aws_vpc" "my_vpc-2" {
     cidr_block = "10.1.0.0/16"
 
   tags = {
