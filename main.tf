@@ -1,6 +1,6 @@
 # Configure the AWS provider
 provider "aws" {
-  region = "us-east-2" # Replace with your desired AWS region
+  region = "us-east-1" # Replace with your desired AWS region
 }
 
 # Create the VPC, subnets, internet gateway, and availability zones
@@ -24,7 +24,7 @@ resource "aws_vpc" "my_vpc-2" {
 resource "aws_subnet" "subnet_1" {
   vpc_id     = aws_vpc.my_vpc-1.id
   cidr_block = "10.0.1.0/24"
-  availability_zone = "us-east-2a"
+  availability_zone = "us-east-1a"
   tags = {
     Name = "subnet_1"
   }
@@ -33,7 +33,7 @@ resource "aws_subnet" "subnet_1" {
 resource "aws_subnet" "subnet_2" {
   vpc_id     = aws_vpc.my_vpc-2.id
   cidr_block = "10.0.2.0/24"
-  availability_zone = "us-east-2b"
+  availability_zone = "us-east-1b"
   tags = {
     Name = "subnet_2"
   }
