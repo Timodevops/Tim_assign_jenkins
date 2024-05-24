@@ -12,13 +12,13 @@ resource "aws_vpc" "my_vpc-1" {
   }
 }
 
-resource "aws_vpc" "my_vpc-2" {
-    cidr_block = "10.1.0.0/16"
+-- resource "aws_vpc" "my_vpc-2" {
+--     cidr_block = "10.1.0.0/16"
 
-  tags = {
-    Name = "my-vpc-2"
-  }
-}
+--   tags = {
+--     Name = "my-vpc-2"
+--   }
+-- }
 
 
 resource "aws_subnet" "subnet_1" {
@@ -31,7 +31,7 @@ resource "aws_subnet" "subnet_1" {
 }
 
 resource "aws_subnet" "subnet_2" {
-  vpc_id     = aws_vpc.my_vpc-2.id
+  vpc_id     = aws_vpc.my_vpc-1.id
   cidr_block = "10.0.1.0/24"
   availability_zone = "us-east-1b"
   tags = {
@@ -46,13 +46,13 @@ resource "aws_internet_gateway" "my_igw-1" {
     Name = "my-igw-1"
   }
 }
-resource "aws_internet_gateway" "my_igw-2" {
-  vpc_id = aws_vpc.my_vpc-2.id
+-- resource "aws_internet_gateway" "my_igw-2" {
+--   vpc_id = aws_vpc.my_vpc-2.id
 
-  tags = {
-    Name = "my-igw-2"
-  }
-}
+--   tags = {
+--     Name = "my-igw-2"
+--   }
+-- }
 
 
 # Create 3 EC2 instances
@@ -68,7 +68,7 @@ resource "aws_instance" "my_ec2-1" {
 resource "aws_instance" "my_ec2-2" {
   ami           = "ami-0d77c9d87c7e619f9" # Replace with your desired AMI
   instance_type = "t2.micro"
-  subnet_id     = aws_subnet.subnet_2.id
+  subnet_id     = aws_subnet.subnet_1.id
   vpc_security_group_ids = [aws_security_group.my_security_group.id]
   tags = {
     Name = "my-ec2-2"
