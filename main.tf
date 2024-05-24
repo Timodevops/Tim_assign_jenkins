@@ -32,7 +32,7 @@ resource "aws_subnet" "subnet_1" {
 
 resource "aws_subnet" "subnet_2" {
   vpc_id     = aws_vpc.my_vpc-2.id
-  cidr_block = "10.0.2.0/24"
+  cidr_block = "10.0.1.0/24"
   availability_zone = "us-east-1b"
   tags = {
     Name = "subnet_2"
@@ -57,7 +57,7 @@ resource "aws_internet_gateway" "my_igw-2" {
 
 # Create 3 EC2 instances
 resource "aws_instance" "my_ec2-1" {
-  ami           = "ami-02bf8ce06a8ed6092" # Replace with your desired AMI
+  ami           = "ami-0a6e937be33b64a93" # Replace with your desired AMI
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.subnet_1.id
   vpc_security_group_ids = [aws_security_group.my_security_group.id]
