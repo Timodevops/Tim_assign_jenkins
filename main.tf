@@ -38,8 +38,6 @@ resource "aws_internet_gateway" "my_igw-1" {
   }
 }
 
-
-
 # Create 3 EC2 instances
 resource "aws_instance" "my_ec2-1" {
   ami           = "ami-0a6e937be33b64a93" # Replace with your desired AMI
