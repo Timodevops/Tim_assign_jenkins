@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/your-repo/terraform-aws.git'
+                git branch: 'main', url: 'https://github.com/Timodevops/Tim_assign_jenkins.git'
             }
         }
 
