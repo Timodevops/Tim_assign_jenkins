@@ -12,15 +12,6 @@ resource "aws_vpc" "my_vpc-1" {
   }
 }
 
--- resource "aws_vpc" "my_vpc-2" {
---     cidr_block = "10.1.0.0/16"
-
---   tags = {
---     Name = "my-vpc-2"
---   }
--- }
-
-
 resource "aws_subnet" "subnet_1" {
   vpc_id     = aws_vpc.my_vpc-1.id
   cidr_block = "10.0.0.0/24"
@@ -46,13 +37,7 @@ resource "aws_internet_gateway" "my_igw-1" {
     Name = "my-igw-1"
   }
 }
--- resource "aws_internet_gateway" "my_igw-2" {
---   vpc_id = aws_vpc.my_vpc-2.id
 
---   tags = {
---     Name = "my-igw-2"
---   }
--- }
 
 
 # Create 3 EC2 instances
