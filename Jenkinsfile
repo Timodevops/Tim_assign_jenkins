@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/your-repo/terraform-aws-architecture.git'
+                git branch: 'main', url: 'https://github.com/Timodevops/Tim_assign_jenkins.git'
             }
         }
 
@@ -39,6 +39,25 @@ pipeline {
                         }
                     }
                 }
+            }
+        }
+
+        stage('Destroy Resources') {
+            steps {
+                script {
+                    def destroy = input message: 'Do you want to destroy the resources?',
+                        parameters: [choice(name: 'Action', choices: 'Destroy\nKeep', description: 'Destroy or keep the resources?')]
+                    if (destroy == 'Destroy') {
+                        sh 'terraform destroy --auto-approve'
+                    }
+                }
+            }
+        }
+
+        stage('Clean Up') {
+            steps {
+                sh 'rm -rf .terraform'
+                sh 'rm tfplan'
             }
         }
     }
