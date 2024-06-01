@@ -28,32 +28,16 @@ pipeline {
 
         stage('Approval') {
             steps {
-                script {
-                    def plan = input message: 'Do you want to apply the Terraform plan?',
-                        parameters: [choice(name: 'Action', choices: 'Apply\nDiscard', description: 'Apply or discard the Terraform plan?')]
-                    if (plan == 'Apply') {
-                        stage('Terraform Apply') {
-                            steps {
-                                sh 'terraform apply tfplan'
-                            }
-                        }
-                    }
-                }
+                sh 'terraform apply tfplan'
             }
         }
-
+        
         stage('Destroy Resources') {
             steps {
-                script {
-                    def destroy = input message: 'Do you want to destroy the resources?',
-                        parameters: [choice(name: 'Action', choices: 'Destroy\nKeep', description: 'Destroy or keep the resources?')]
-                    if (destroy == 'Destroy') {
-                        sh 'terraform destroy --auto-approve'
-                    }
-                }
+                sh 'terraform destroy --auto-approve'
             }
         }
-
+        
         stage('Clean Up') {
             steps {
                 sh 'rm -rf .terraform'
